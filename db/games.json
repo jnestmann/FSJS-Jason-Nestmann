@@ -1,4 +1,21 @@
 [
-    {"id": "1", "title": "Conquest of the Empire"},
-    {"id": "2", "title": "Axis and Allies"}
+    {
+        "title": "Conquest of the Empire",
+        "type": "board game",
+        "min_player": 2,
+        "max_player": 6,
+        "id": "1"
+    },
+    {
+        "title": "Axis and Allies",
+        "id": "2"
+    },
+    {
+        "title": "Flash Point",
+        "id": "3"
+    },
+    {
+        "title": "Ghostbusters",
+        "id": "4"
+    }
 ]
