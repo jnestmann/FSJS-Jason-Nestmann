@@ -43,6 +43,10 @@ router.get('/files', function(req, res, next) {
     //res.json(data_api.get_all());
 });
 
+router.get('/files/?:fileID', function(req, res, next){
+    data_api.get(req, res);
+});
+
 
 //router.put('/file/:fileId', function(req, res, next) {
 //    data_api.put(req, res);

@@ -22,10 +22,11 @@ function post_data(req, res) {
 
 // read data
 function get_data(req, res, next) {
-  const {fileId} = req.params;
-  // same as 'const fileId = req.params.fileId'
+    console.log(req.params);
+  const fileID = req.params.fileID;
+  //const fileId = req.params.fileId
 
-  const file = FILES.find(entry => entry.id === fileId);
+  const file = FILES.find(entry => entry.id === fileID);
   if (!file) {
     return res.status(404).end(`Could not find file '${fileId}'`);
   }

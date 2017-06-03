@@ -3,4 +3,5 @@ extends layout
 block content
     div.games_list
         each game in games
-            p <a href="/"><strong>#{game.title}</strong></a>: #{game.type} for #{game.min_player} to #{game.max_player} players
+            p
+            a(href="/files/" + game.id) <strong>#{game.title}</strong></a>: #{game.type || "Undefined"} for #{game.min_player || "_"} to #{game.max_player || "_"} players
