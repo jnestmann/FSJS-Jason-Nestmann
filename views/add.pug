@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    div.main
+        form(action="../add/file", method="get", enctype="application/form-data")
+            label(for="title") Title:
+            input#title(name="title", type="text" placeholder="A Form", value="")
+            button(type="submit") Save

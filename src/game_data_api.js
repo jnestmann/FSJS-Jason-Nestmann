@@ -1,11 +1,12 @@
 const game_data = require('../db/games.json');
 const fs = require('fs');
+const jsonParser = require('body-parser');
 
-const data_file = './db/games.json';
+//const data_file = './db/games.json';
 const FILES = game_data;
 
 function get_all() {
-    return game_data;
+    return FILES;
 }
 
 // CRUD functions for game data
@@ -50,16 +51,21 @@ function delete_data(req, res, next) {
   res.end(`Deleting file '${req.params.fileId}'`);
 }
 
-// resaves data back to the json file
-function save_all(req, res){
-    res.send("Feature not ready");
-    //fs.writeFileSync(data_file, FILES);
+
+function post2(form_data) {
+    const newId = '' + (game_data.length + 1);
+    const data = form_data;
+    data.id = newId;
+
+    FILES.push(data);
+    const newFILES = JSON.stringify(FILES, null, 4);
+    fs.writeFileSync('./db/games.json', newFILES);
 }
 
 
 module.exports.get_all = get_all;
 module.exports.post = post_data;
+module.exports.post2 = post2;
 module.exports.get = get_data;
 module.exports.put = put_data;
 module.exports.delete = delete_data;
-module.exports.save = save_all;
