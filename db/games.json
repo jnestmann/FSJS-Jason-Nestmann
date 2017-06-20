@@ -7,15 +7,11 @@
         "id": "1"
     },
     {
-        "title": "Axis and Allies",
-        "id": "2"
-    },
-    {
         "title": "Flash Point",
-        "id": "3"
-    },
-    {
-        "title": "Ghostbusters",
-        "id": "4"
+        "minPlayers": "2",
+        "maxPlayers": "8",
+        "minAge": "10",
+        "cooperative": "",
+        "id": "2"
     }
 ]
