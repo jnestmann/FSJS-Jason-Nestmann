@@ -1,7 +1,5 @@
 // src/routes/index.js
 const router = require('express').Router();
-const jsonParser = require('body-parser');
-
 const data_api = require('../game_data_api.js');
 
 
@@ -10,10 +8,16 @@ router.get('/', function(req, res, next){
     next();
 });
 
-router.post('/add', function(req, res, next){
+router.get('/about', function(req, res, next){
+    res.render('about');
+    next();
+})
+
+router.post('/add/file', function(req, res, next){
     console.log("Post request made");
     console.log(req.body);
-    res.render('add');
+    data_api.post2(req.body);
+    res.render('index');
 });
 
 router.get('/add', function(req, res, next){
@@ -23,12 +27,6 @@ router.get('/add', function(req, res, next){
 router.get('/add/file', function(req, res, next){
     data_api.post2(req.query);
     res.render('add');
-});
-
-router.post('/add/file', function(req, res, next){
-    console.log("Post request");
-    data_api.post2(req.body);
-    res.render('add');    
 });
 
 //router.get('/file/search', function(req, res, next) {
@@ -46,6 +44,30 @@ router.get('/files', function(req, res, next) {
 router.get('/files/?:fileID', function(req, res, next){
     data_api.get(req, res);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //router.put('/file/:fileId', function(req, res, next) {
