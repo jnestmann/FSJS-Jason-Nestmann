@@ -2,7 +2,7 @@
 
 const express = require('express');
 const pug = require('pug');
-const jsonParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const config = require('./config');
 const router = require('./routes');
@@ -11,7 +11,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use('/static/', express.static("./public"));
-app.use(jsonParser.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // sends all rountes to be handled by the router.js file
 app.use('/', router);
