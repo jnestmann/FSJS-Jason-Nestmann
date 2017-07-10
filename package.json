@@ -1,22 +1,23 @@
 {
-    "name": "fsjs_personal_project",
-    "version": "1.0.0",
-    "description": "Personal portfolio project for Code Louisville full-stack JavaScript class",
-    "main": "server.js",
-    "scripts": {
-        "start": "nodemon index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "code",
-        "louisville",
-        "javascript"
-    ],
-    "author": "Jason Nestmann",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.17.2",
-        "express": "^4.15.3",
-        "pug": "^2.0.0-rc.1"
+  "name": "fsjs_personal_project",
+  "version": "1.0.0",
+  "description": "Personal portfolio project for Code Louisville full-stack JavaScript class",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "code",
+    "louisville",
+    "javascript"
+  ],
+  "author": "Jason Nestmann",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.1",
+    "pug": "^2.0.0-rc.1"
   }
 }

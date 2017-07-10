@@ -4,8 +4,15 @@ const express = require('express');
 const pug = require('pug');
 const bodyParser = require('body-parser');
 
+const mongoose = require('mongoose');
+
 const config = require('./config');
 const router = require('./routes');
+
+
+// Connect to MongoDB and create/use database as configured
+mongoose.connect(`mongodb://${config.db.host}/${config.db.dbName}`);
+
 
 const app = express();
 const port = process.env.PORT || 3000;
