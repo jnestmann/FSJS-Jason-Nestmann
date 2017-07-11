@@ -5,9 +5,9 @@ const FileSchema = new mongoose.Schema({
     title: String,
     description: String,
     type: String,
-    min_players: String,
-    max_players: String,
-    min_age: String,
+    minPlayers: String,
+    maxPlayers: String,
+    minAge: String,
     cooperative: Boolean,
     created_at: { type: Date, default: Date.now },
 });
