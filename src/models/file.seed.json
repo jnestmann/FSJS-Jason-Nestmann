@@ -2,17 +2,17 @@
     {
         "title": "Conquest of the Empire",
         "description": " ",
-        "minPlayers": 2,
-        "maxPlayers": 8,
-        "minAge": 0,
+        "minPlayers": "2",
+        "maxPlayers": "8",
+        "minAge": "0",
         "cooperative": false
     },
     {
         "title": "Flash Point",
         "description": " ",
-        "minPlayers": 2,
-        "maxPlayers": 8,
-        "minAge": 0,
+        "minPlayers": "2",
+        "maxPlayers": "8",
+        "minAge": "0",
         "cooperative": true
     }
 ]
