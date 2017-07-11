@@ -4,13 +4,18 @@ const data_api = require('../game_data_api.js');
 const mongoose = require('mongoose');
 
 // Gets the main landing, home page
-router.get('/', function(req, res, next){
-    res.render('index');
-    next();
+router.get('/', function(req, res, next) {
+    mongoose.model('File').find({}, function(err, files) {
+        if (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+        res.render('games_list', {games: files});
+    });
 });
 
 // Posts new data to the database
-router.post('/file', function(req, res, next){
+router.post('/', function(req, res, next){
     const File = mongoose.model('File');
     console.log(req.body);
     const fileData = {
@@ -34,42 +39,10 @@ router.post('/file', function(req, res, next){
 });
 
 
-router.post('/add/file', function(req, res, next){
-    console.log("Post request made");
-    console.log(req.body);
-    data_api.post2(req.body);
-    const games = data_api.get_all();
-    res.render('games_list', {games: games});
-});
-
 router.get('/add', function(req, res, next){
     res.render('add');
 });
 
-router.get('/add/file', function(req, res, next){
-    data_api.post2(req.query);
-    res.render('add');
-});
-
-//router.get('/file/search', function(req, res, next) {
-//    res.render('search');
-//    next();
-//});
-
-router.get('/files', function(req, res, next) {
-    mongoose.model('File').find({}, function(err, files) {
-        if (err) {
-            console.log(err);
-            res.status(500).json(err);
-        }
-        res.render('games_list', {games: files});
-        //res.json(files);
-    });
-    //const games = data_api.get_all();
-    //console.log(games);
-    //res.render('games_list', {games: games});
-    //res.json(data_api.get_all());
-});
 
 router.get('/files/?:fileID', function(req, res, next){
     data_api.get(req, res);
