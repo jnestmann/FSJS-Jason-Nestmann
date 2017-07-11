@@ -1,7 +1,7 @@
 // src/routes/index.js
 const router = require('express').Router();
-const data_api = require('../game_data_api.js');
 const mongoose = require('mongoose');
+
 
 // Gets the main landing, home page
 router.get('/', function(req, res, next) {
@@ -14,10 +14,15 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+router.get('/add', function(req, res, next){
+    res.render('add');
+});
+
+
 // Posts new data to the database
-router.post('/', function(req, res, next){
+router.post('/file', function(req, res, next){
     const File = mongoose.model('File');
-    console.log(req.body);
     const fileData = {
         title: req.body.title,
         description: req.body.description,
@@ -26,66 +31,33 @@ router.post('/', function(req, res, next){
         minAge: req.body.minAge,
         cooperative: req.body.cooperative
     };
-    console.log(fileData);
 
   File.create(fileData, function(err, newFile) {
     if (err) {
       console.log(err);
       return res.status(500).json(err);
     }
-    res.render('games_list', res.json());
-    //res.json(newFile);
+      res.redirect('/');
   });
 });
 
 
-router.get('/add', function(req, res, next){
-    res.render('add');
+router.get('/:fileId', function(req, res, next) {
+    const File = mongoose.model('File');
+    const fileId = req.params.fileId;
+    
+    File.findById(fileId, function(err, file) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+    if (!file) {
+      return res.status(404).json({message: "File not found"});
+    }
+
+    res.json(file);
+    })
 });
 
-
-router.get('/files/?:fileID', function(req, res, next){
-    data_api.get(req, res);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//router.put('/file/:fileId', function(req, res, next) {
-//    data_api.put(req, res);
-//    next();
-//});
-
-//router.delete('/file/:fileId', function(req, res, next) {
-//    data_api.delete(req, res);
-//    next();
-//});
-
-//router.get('/file/:fileId', function(req, res, next) {
-//    data_api.get(req, res);
-//    next();
-//});
 
 module.exports = router;
