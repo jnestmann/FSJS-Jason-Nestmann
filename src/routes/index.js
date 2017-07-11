@@ -9,12 +9,6 @@ router.get('/', function(req, res, next){
     next();
 });
 
-// Gets the about page - should provide information on how to use the database
-router.get('/about', function(req, res, next){
-    res.render('about');
-    next();
-})
-
 // Posts new data to the database
 router.post('/file', function(req, res, next){
     const File = mongoose.model('File');
