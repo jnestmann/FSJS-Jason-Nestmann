@@ -1,6 +1,7 @@
 // src/routes/index.js
 const router = require('express').Router();
 const data_api = require('../game_data_api.js');
+const mongoose = require('mongoose');
 
 
 router.get('/', function(req, res, next){
@@ -17,7 +18,8 @@ router.post('/add/file', function(req, res, next){
     console.log("Post request made");
     console.log(req.body);
     data_api.post2(req.body);
-    res.render('index');
+    const games = data_api.get_all();
+    res.render('games_list', {games: games});
 });
 
 router.get('/add', function(req, res, next){
@@ -35,9 +37,17 @@ router.get('/add/file', function(req, res, next){
 //});
 
 router.get('/files', function(req, res, next) {
-    const games = data_api.get_all();
-    console.log(games);
-    res.render('games_list', {games: games});
+    mongoose.model('File').find({}, function(err, files) {
+        if (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+        //res.render('games_list', files);
+        res.json(files);
+    });
+    //const games = data_api.get_all();
+    //console.log(games);
+    //res.render('games_list', {games: games});
     //res.json(data_api.get_all());
 });
 

@@ -12,6 +12,7 @@ const router = require('./routes');
 
 // Connect to MongoDB and create/use database as configured
 mongoose.connect(`mongodb://${config.db.host}/${config.db.dbName}`);
+require('./models/file.model.js');
 
 
 const app = express();
