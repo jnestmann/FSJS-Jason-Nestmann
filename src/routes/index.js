@@ -3,16 +3,42 @@ const router = require('express').Router();
 const data_api = require('../game_data_api.js');
 const mongoose = require('mongoose');
 
-
+// Gets the main landing, home page
 router.get('/', function(req, res, next){
     res.render('index');
     next();
 });
 
+// Gets the about page - should provide information on how to use the database
 router.get('/about', function(req, res, next){
     res.render('about');
     next();
 })
+
+// Posts new data to the database
+router.post('/file', function(req, res, next){
+    const File = mongoose.model('File');
+    console.log(req.body);
+    const fileData = {
+        title: req.body.title,
+        description: req.body.description,
+        minPlayers: req.body.minPlayers,
+        maxPlayers: req.body.maxPlayers,
+        minAge: req.body.minAge,
+        cooperative: req.body.cooperative
+    };
+    console.log(fileData);
+
+  File.create(fileData, function(err, newFile) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+    res.render('games_list', res.json());
+    //res.json(newFile);
+  });
+});
+
 
 router.post('/add/file', function(req, res, next){
     console.log("Post request made");
@@ -42,8 +68,8 @@ router.get('/files', function(req, res, next) {
             console.log(err);
             res.status(500).json(err);
         }
-        //res.render('games_list', files);
-        res.json(files);
+        res.render('games_list', {games: files});
+        //res.json(files);
     });
     //const games = data_api.get_all();
     //console.log(games);
