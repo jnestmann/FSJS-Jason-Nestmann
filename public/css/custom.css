@@ -1,0 +1,82 @@
+body {
+    background: #ECEEEF;
+    text-align: center;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    font: 18px normal 'Varela Round', Helvetica, serif;
+    color: #777B7E;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    max-width: 462px;
+}
+.addform {
+    text-align: left;
+    margin: 70px 20px auto 20px;
+}
+.games_list {
+    display: flex;
+    flex-direction: column;
+    margin: 70px 20px auto 20px;
+
+}
+.game_entry {
+    text-align: left;
+}
+.glyphicon {
+    text-align: right;
+}
+ul {
+    list-style: none;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+    margin-top: 50px;
+}
+
+footer a {
+    border = 0;
+    text-decoration: none;
+}
+
+.copyright {
+    align-self: flex-start;
+    vertical-align: middle;
+    margin: auto 0;
+    padding-left: 10px;
+    color: #444;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.social_media {
+    padding-right: 10px;
+}
+
+.icon-linkedin,
+.icon-github,
+.icon-treehouse {
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  text-shadow: 2px 2px 0px #fff;
+}
