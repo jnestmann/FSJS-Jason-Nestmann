@@ -27,10 +27,17 @@ body {
     display: flex;
     flex-direction: column;
     margin: 70px 20px auto 20px;
+    text-align: left;
 
 }
 .game_entry {
+    display: flex;
+    flex-direction: row;
+    margin: 70px 20px auto 20px;
     text-align: left;
+}
+#game_id {
+    display: none;
 }
 .glyphicon {
     text-align: right;

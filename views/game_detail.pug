@@ -1,5 +1,11 @@
 extends layout
 
 block content
-    p
-        Here is a new page.
+    div(class="game_entry")
+        h1 #{game.title}
+        p Game Description: #{game.description}
+        button(id="edit")
+            span(class="glyphicon glyphicon-pencil" aria-hidden="true")
+        button(id="delete")
+            span(class="glyphicon glyphicon-trash" aria-hidden="true")
+        div(display="hidden" id="game_id") #{game.id}

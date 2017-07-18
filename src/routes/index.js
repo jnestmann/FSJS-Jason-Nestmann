@@ -55,8 +55,31 @@ router.get('/:fileId', function(req, res, next) {
       return res.status(404).json({message: "File not found"});
     }
 
-    res.render('game_detail');
+    res.render('game_detail', {game: file});
     })
+});
+
+
+router.delete('/file/:fileId', function(req, res, next) {
+  const File = mongoose.model('File');
+  const fileId = req.params.fileId;
+
+  File.findById(fileId, function(err, file) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+    if (!file) {
+      return res.status(404).json({message: "File not found"});
+    }
+
+    file.deleted = true;
+
+    file.save(function(err, doomedFile) {
+      res.json(doomedFile);
+    })
+
+  })
 });
 
 

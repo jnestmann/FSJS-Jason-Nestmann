@@ -9,10 +9,30 @@ if (trashcans == null) {
     console.log("homepage");
 } else {
     trashcans.addEventListener('click', ()=> {
-        console.log("delete");
+        let id = document.getElementById('game_id').textContent;
+        deleteFileClick(id);
     });
 
     pencils.addEventListener('click', ()=> {
         console.log('edit');
     });    
+}
+
+
+function deleteFileClick(id) {
+  if (confirm("Are you sure?")) {
+    $.ajax({
+      type: 'DELETE',
+      url: '/file/' + id,
+      dataType: 'json',
+      contentType : 'application/json',
+    })
+      .done(function(response) {
+        console.log("File", id, "deleted");
+        //refreshFileList();
+      })
+      .fail(function(error) {
+        console.log("Error deleting file: ", error);
+      })
+  }
 }
