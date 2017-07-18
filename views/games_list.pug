@@ -4,6 +4,6 @@ block content
     div(class="games_list")
         ul
             each game in games
-                li(class="game_entry")
+                li
                     div(class="link")
                         a(href="/" + game.id) <strong>#{game.title}</span></a>: #{game.type} for #{game.minPlayers} to #{game.maxPlayers} players
