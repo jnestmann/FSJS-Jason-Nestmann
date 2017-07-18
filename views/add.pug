@@ -1,26 +1,21 @@
 extends layout
 
 block content
-    div.main
-        form(action="./add/file/" method="post")
+    div.addform
+        form(action="/file" method="post")
             div
                 label(for="title") Title:
                 input#title(name="title" type="text" placeholder="A Form" value="")
             div
                 label(for="minPlayers") Min Players:
-                input(name="minPlayers" type="text" placeholder="Please enter a number")
+                input(name="minPlayers" type="Number" placeholder="Please enter a number")
             div
                 label(for="maxPlayers") Max Players:
-                input(name="maxPlayers" type="text" placeholder="Please enter a number")
+                input(name="maxPlayers" type="Number" placeholder="Please enter a number")
             div
                 label(for="minAge") Min Recommended Age:
-                input(name="minAge" type="text" placeholder="Please enter a number")
-            fieldset
-                legend Cooperative Game
-                p
-                input(type="radio" name="cooperative" id="cooperative_yes" value=true)
-                label(for="cooperative_yes") Yes
-                p
-                input(type="radio" name="cooperative" id="cooperative_no" value=false)
-                label(for="cooperative_no") No
+                input(name="minAge" type="Number" placeholder="Please enter a number")
+            div
+                input(type="checkbox" name="cooperative" id="cooperative" value=true)
+                label(for="cooperative") Cooperative game
             button(type="submit" value="text") Save
