@@ -1,6 +1,7 @@
 [
     {
         "title": "Conquest of the Empire",
+        "type": "Boardgame",
         "description": " ",
         "minPlayers": "2",
         "maxPlayers": "8",
@@ -9,10 +10,20 @@
     },
     {
         "title": "Flash Point",
+        "type": "Boardgame",
         "description": " ",
         "minPlayers": "2",
         "maxPlayers": "8",
         "minAge": "0",
         "cooperative": true
+    },
+    {
+        "title": "Solitare",
+        "type": "Cardbame",
+        "description": " ",
+        "minPlayers": "1",
+        "maxPlayers": "1",
+        "minAge": "0",
+        "cooperative": false
     }
 ]
