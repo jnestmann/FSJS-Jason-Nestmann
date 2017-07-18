@@ -55,7 +55,7 @@ router.get('/:fileId', function(req, res, next) {
       return res.status(404).json({message: "File not found"});
     }
 
-    res.json(file);
+    res.render('game_detail');
     })
 });
 
